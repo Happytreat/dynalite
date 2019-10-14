@@ -7,7 +7,7 @@ coap_server.on('request', function (req, res) {
     if (req._packet.reset) {
         type = "Reset (3)";
     } else if (req._packet.ack) {
-        type = "Acknowledgement  (2)";
+        type = "Acknowledgement (2)";
     } else if (req._packet.confirmable) {
         type = "Confirmable (0)";
     } else {
