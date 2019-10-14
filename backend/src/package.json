@@ -6,11 +6,14 @@
     "type": "git",
     "url": "https://github.com/Happytreat/dynalite.git"
   },
-  "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
-    "http": "0.0.0"
+    "coap": "^0.23.1",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "path": "^0.12.7"
   }
 }

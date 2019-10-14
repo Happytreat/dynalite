@@ -1,14 +1,28 @@
-const http = require('http');
+const express = require('express');
+const path = require('path');
 
-const hostname = '127.0.0.1';
 const port = 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  var datar = [
+      { type: 0, id: "bob", payload: "e" },
+      { type: 1, id: "bob", payload: "e" },
+      { type: 2, id: "bob", payload: "e" },
+  ];
+
+  res.render('index', {
+    data: datar
+  });
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.use((err, request, response, next) => {
+  // log the error, for now just console.log
+  console.log(err)
+  response.status(500).send('Something broke!')
 });
+
+module.exports = app;
