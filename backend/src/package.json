@@ -1,0 +1,16 @@
+{
+  "name": "dynalite_backend",
+  "version": "0.0.1",
+  "author": "Evan Tay <evan.it.sg@gmail.com> (https://evantay.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Happytreat/dynalite.git"
+  },
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "http": "0.0.0"
+  }
+}
