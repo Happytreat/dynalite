@@ -1,6 +1,14 @@
 const router = require("coap-router");
 const app_coap = router();
 
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL
+});
+
+/* SQL Query */
+var sql_query = 'INSERT INTO coap_post (type, id, payload) VALUES';
+
 app_coap.post("/", (req, res) => {
     var type;
     if (req._packet.reset) {
@@ -12,8 +20,17 @@ app_coap.post("/", (req, res) => {
     } else {
         type = "Non-confirmable (1)";
     }
-  
-    console.log("COAP " + req.method + " " + type + ": " + req._packet.messageId + ": " + req.payload);
+
+    m = req.method;
+    id = req._packet.messageId;
+    pl = req.payload;
+
+    console.log("COAP " + m + " " + type + ": " + id + ": " + pl);
+    
+	// Construct Specific SQL Query
+	var insert_query = sql_query + "('" + type + "','" + id + "','" + pl + "')";
+    pool.query(insert_query);
+    res.end();
 });
 
 module.exports = app_coap;

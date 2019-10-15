@@ -11,7 +11,6 @@ var sql_query = 'SELECT * FROM coap_post';
 /* GET home page. */
 router.get('/', function(req, res, next) {
   pool.query(sql_query, (err, data) => {
-    console.log(err);
 		res.render('index', { 
 			data: data.rows 
 		});
