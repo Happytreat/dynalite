@@ -35,3 +35,9 @@ DATABASE_URL=postgres://postgres:password@localhost:5432/postgres
 
 1. Run this project on your local server by using `npm start`.
 2. Stop the server by using `CTRL + C`.
+
+## Testing
+
+1. To test Dynalite without a Raspberry Pi, refer to [COAP-CLI](https://github.com/avency/coap-cli). An example command would be: `coap post coap://localhost/ -p "Hello COAP"`.
+2. Dynalite receives POST COAP messages at `coap://localhost/` which are stored in a PostgreSQL table.
+3. Dynalite displays these stored messages at `http://localhost:3000/`.
