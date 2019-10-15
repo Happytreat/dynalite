@@ -33,21 +33,6 @@ server.on("listening", onListening);
 
 var server_coap = coap.createServer(app_coap);
 
-server_coap.on("request", function (req, res) {
-  var type;
-  if (req._packet.reset) {
-      type = "Reset (3)";
-  } else if (req._packet.ack) {
-      type = "Acknowledgement (2)";
-  } else if (req._packet.confirmable) {
-      type = "Confirmable (0)";
-  } else {
-      type = "Non-confirmable (1)";
-  }
-
-  console.log("COAP " + req.method + " " + type + ": " + req._packet.messageId + ": " + req._packet.payload);
-});
-
 server_coap.listen(() => {
   console.log("The CoAP server is now running.");
 });
