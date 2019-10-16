@@ -1,3 +1,9 @@
+'''
+CoAP Client that runs on Rpi, sends CoAP POST to WebServer.
+
+Uses aiocoap. Supports DTLS.
+'''
+
 import time
 
 import logging

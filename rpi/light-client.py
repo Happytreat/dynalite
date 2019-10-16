@@ -1,5 +1,7 @@
 '''
-CoAP Client that runs on Rpi, sends CoAP POST to Web Server
+CoAP Client that runs on Rpi, sends CoAP POST to WebServer.
+
+Uses Twisted and TxThings. Does not support DTLS.
 '''
 
 import sys
@@ -33,19 +35,17 @@ class UnsafeAgent:
         reactor.callLater(1, self.postResource)
 
     def postResource(self):
-        payload = "test" #rpi.get_light_value()
-        # include time?
+        payload = rpi.get_light_value() #include timestamp?
         request = coap.Message(code=coap.POST, payload=payload)
         request.opt.uri_path = ("light", )
         request.opt.content_format = coap.media_types_rev['text/plain']
         request.remote = (WEBSERVER_IP, coap.COAP_PORT)
 
         d = protocol.request(request)
-        #d.addCallback(self.printResponse)
+        d.addCallback(self.printResponse)
 
     def printResponse(self, response):
-        print "done"
-        #print "Response Code:", coap.responses[response.code]
+        print "Response Code:", coap.responses[response.code]
 
 log.startLogging(sys.stdout)
 
