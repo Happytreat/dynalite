@@ -10,6 +10,8 @@ To run with DTLS, install the development version of `aiocoap` by following the 
 
 `rpi.py` just contains a capacitor-reading code. It uses time to convert digital signals from the Raspberry Pi to analog signals. The full tutorial is [here](https://www.youtube.com/watch?v=dPwW9zmX84E). 
 
+To run on an actual Pi and read from the GPIO pin, uncomment the GPIO portions. For testing on laptops, there will be no `RPi.GPIO` module.
+
 The connection on the RaspberryPi is just the Pi, photoresistor and a capacitor in series. Without a capacitor, the code can still run but only reading digital signals (it can tell there is light, but not how much light).
 
 
