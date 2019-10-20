@@ -9,4 +9,5 @@ This project was built using the following technologies:
 - Continuous Deployment: Herokuapp
 
 ## Local deployment
-To deploy this project locally for development purposes, follow the steps in the [local development guide](DEVELOP.md).
+
+- To deploy the web server locally for development purposes, follow the steps in the [local web server deployment guide](DEVELOP_wEB.md).
