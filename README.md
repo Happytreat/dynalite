@@ -1,13 +1,20 @@
 # Dynalite
-Dynamic visualisation of room occupancy using Raspberry Pi and COAP.
+Dynalite is an [Internet-of-Things](https://en.wikipedia.org/wiki/Internet_of_things) application which performs dynamic visualisation of room occupancy. Dynalite uses one or more Raspberry Pis to measure room occupancy and a NodeJS-Express-PostgreSQL web server to store and visualise the measured data. Communication betwene the Pis and the server is implemented using [COAP](https://coap.technology/).
 
 ## Tech stack
 This project was built using the following technologies:
-- Back-end: NodeJS, ExpressJS, NodeJS-COAP, PostgreSQL
+
+Web server:
+
+- Back-end: NodeJS, ExpressJS, PostgreSQL
 - Front-end: JQuery, Bootstrap
-- IoT: Raspberry Pi, COAP
-- Continuous Deployment: Herokuapp
+- Communication: NodeJS-COAP
 
-## Local deployment
+Raspberry Pi:
 
-- To deploy the web server locally for development purposes, follow the steps in the [local web server deployment guide](DEVELOP_wEB.md).
+- To fill
+
+## Development guides
+
+- To deploy the web server locally for development purposes, follow the steps in the [local web server deployment guide](DEVELOP_WEB.md).
+- To setup the Raspberry Pi, view the [Raspberry Pi setup guide](DEVELOP_RASPBERRY_PI.md).
