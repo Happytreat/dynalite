@@ -1,0 +1,26 @@
+{
+  "name": "dynalite_backend",
+  "version": "0.0.2",
+  "author": "Evan Tay <evan.it.sg@gmail.com> (https://evantay.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Happytreat/dynalite.git"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "coap-router": "^1.0.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.1.0",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pg-promise": "^9.3.3",
+    "pg": "^7.12.1"
+  }
+}

@@ -1,17 +1,20 @@
-# dynalite
+# Dynalite
+Dynalite is an [Internet-of-Things](https://en.wikipedia.org/wiki/Internet_of_things) application which performs dynamic visualisation of room occupancy. Dynalite uses one or more Raspberry Pis to measure room occupancy and a NodeJS-Express-PostgreSQL web server to store and visualise the measured data. Communication betwene the Pis and the server is implemented using [COAP](https://coap.technology/).
 
-### rpi
+## Tech stack
+This project was built using the following technologies:
 
-These are the scripts run on the actual raspberry pis
+Web server:
 
-To run without DTLS, install `txthings` using `pip`. Then, run `python light-client.py`. This is in python2 because of Twisted [not being fully ported](https://twistedmatrix.com/documents/14.0.2/core/howto/python3.html). txThings does not have support for DTLS yet.
+- Back-end: NodeJS, ExpressJS, PostgreSQL
+- Front-end: JQuery, Bootstrap
+- Communication: NodeJS-COAP
 
-To run with DTLS, install the development version of `aiocoap` by following the instructions [here](https://aiocoap.readthedocs.io/en/latest/installation.html). Then, run `python3 light-client-dtls.py`. This script is in python3.
+Raspberry Pi:
 
-`rpi.py` just contains a capacitor-reading code. It uses time to convert digital signals from the Raspberry Pi to analog signals. The full tutorial is [here](https://www.youtube.com/watch?v=dPwW9zmX84E). 
+- To fill
 
-To run on an actual Pi and read from the GPIO pin, uncomment the GPIO portions. For testing on laptops, there will be no `RPi.GPIO` module.
+## Development guides
 
-The connection on the RaspberryPi is just the Pi, photoresistor and a capacitor in series. Without a capacitor, the code can still run but only reading digital signals (it can tell there is light, but not how much light).
-
-
+- To deploy the web server locally for development purposes, follow the steps in the [local web server deployment guide](DEVELOP_WEB.md).
+- To setup the Raspberry Pi, view the [Raspberry Pi setup guide](DEVELOP_RASPBERRY_PI.md).
