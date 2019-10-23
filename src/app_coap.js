@@ -1,11 +1,11 @@
-/**
+/*
  * Module dependencies.
  */
 const crypto = require('crypto');
 const router = require('coap-router');
 const app_coap = router();
 
-/**
+/*
  * Setup
  */
 /* Database connection */
@@ -23,7 +23,7 @@ const cGreen = '\x1b[32m';
 const cYellow = '\x1b[33m';
 const cReset = '\x1b[0m'; // Resets the console colour
 
-/**
+/*
  * Receive COAP POST messages and insert payload's data into
  * the database if message is successfully decrypted and authenticated.
  */
