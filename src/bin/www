@@ -38,7 +38,7 @@ server.on('listening', onListening);
 let server_coap = coap.createServer(app_coap);
 
 server_coap.listen(() => {
-  console.log('The CoAP server is now running.');
+  console.log('The COAP server is now running.');
 });
 
 /**
