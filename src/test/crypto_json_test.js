@@ -3,7 +3,7 @@
  * To use, create a .env file containing ALGORITHM and KEY (e.g. ALGORITHM=des, KEY=applepen).
  * Update dotenv_path to the location of the .env file.
  * Remember to npm install crypto and dotenv modules.
- * To run this script, type 'node test_crypto.js <text>' where <text> is the text to be encrypted.
+ * To run this script, type 'node ${filename} <key, value> [key, value]...'.
  */
 /*
  * Module dependencies.
@@ -26,13 +26,38 @@ const cReset = '\x1b[0m'; // Resets the console colour
 /*
  * Input
  */
-// Takes in a single parameter <text> which will be encrypted and decrypted.
-let text = process.argv[2];
-if (typeof text == 'undefined' && !text) {
+// Takes in at least two parameters <key> <value> which will be encrypted.
+// More <key> <value> pairs may be added.
+let parameters = process.argv.splice(2);
+
+if (parameters.length < 1) {
     filename = path.basename(__filename);
-    console.log(`${cRed}Missing parameter: <text>${cReset}\nUsage: node ${filename} <text>`);
+    console.log(`${cRed}Missing JSON parameters: <key, value>${cReset}\n`
+            + `Usage: node ${filename} <key, value> [key, value]...\n`
+            + `Minimally one <key, value> pair required.\n`
+            + `Additional [key] [value] pairs can be added.\n`
+            + `Example: node ${filename} id 500`);
+    process.exit(1);
+} else if (parameters.length%2 != 0) {
+    filename = path.basename(__filename);
+    console.log(`${cRed}JSON parameters must come in pairs: <key, value>${cReset}\n`
+            + `Usage: node ${filename} <key, value> [key, value]...\n`
+            + `Minimally one <key, value> pair required.\n`
+            + `Additional [key] [value] pairs can be added.\n`
+            + `Example: node ${filename} id 500`);
     process.exit(1);
 }
+
+/**
+ * Convert parameters into JSON object.
+ */
+let json_payload = { };
+let i;
+for (i = 0; i < parameters.length; i += 2) {
+    json_payload[parameters[i]] = parameters[i + 1];
+}
+
+let text = JSON.stringify(json_payload);
 
 /*
  * Encryption
