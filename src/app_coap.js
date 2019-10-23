@@ -58,26 +58,35 @@ app_coap.post('/', (req, res) => {
 
         console.log(`${cYellow}${pl}${cReset} -> ${cGreen}${decrypted}${cReset}`);
     } catch (err) {
-        res.code = 403;
-        console.log(`${cRed}Error:${cReset} Message decryption failed.\n` 
+        res.code = 401; // Unauthorized
+        console.log(`${cRed}Client error:${cReset} Unauthorized access\n` 
                 + `Replied with ${cRed}COAP code 4.03${cReset}`);
-        return res.end('Forbidden: Message decryption failed');
+        return res.end('Unauthorized: Invalid key and encryption');
     }
     
+    try {
+        JSON.parse(decrypted);
+    } catch (err) {
+        res.code = 400; // Bad request
+        console.log(`${cRed}Client error:${cReset} Payload is not JSON object\n` 
+                + `Replied with ${cRed}COAP code 4.00${cReset}`);
+        return res.end('Bad request: Payload is not JSON object');
+    }
+
 	// Construct Specific SQL Query
     let insert_query = `${sql_query} ('${type}', ${id}, '${decrypted}')`;
 
     pool.query(insert_query, (err, result) => {
         if (err) {
-            res.code = 500;
-            console.log(`${cRed}Error:${cReset} SQL insert failed\n` 
+            res.code = 500; // Internal server error
+            console.log(`${cRed}Server error:${cReset} SQL insert failed\n` 
                     + `Replied with ${cRed}COAP code 5.00${cReset}\n${err.message}`);
-            return res.end('Error: SQL insert failed');
+            return res.end('Internal Server Error: SQL insert failed');
         } else {
-            res.code = 200;
+            res.code = 200; // Success ACK
             console.log(`${cGreen}Success${cReset}: Inserted payload into database.\n`
-                    + `Replied with ${cGreen}COAP code 2.01${cReset}`);
-            return res.end('Inserted payload into database.');
+                    + `Replied with ${cGreen}COAP code 2.00${cReset}`);
+            return res.end('OK: Inserted payload into database.');
         }
     });
 });
