@@ -8,4 +8,4 @@ CREATE TABLE coap_post (
 );
 
 INSERT INTO coap_post (type, id, payload) 
-VALUES ('Confirmable(0)', '57602', '{"rpi_id": 1, "timestamp": "2018-12-25 09:27:53", "isOccupied": 1}');
+VALUES ('Confirmable(0)', '57602', '{"dummy_data": "yes", "rpi_id": 1, "timestamp": "2018-12-25 09:27:53", "isOccupied": 1}');
