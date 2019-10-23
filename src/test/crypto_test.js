@@ -14,7 +14,7 @@ const dotenv_path = '../.env'; // Modify if necessary
 require('dotenv').config({path: dotenv_path});
 
 // Takes in a single parameter <text> which will be encrypted and decrypted.
-var text = process.argv[2];
+let text = process.argv[2];
 if (typeof text == 'undefined' && !text) {
     filename = path.basename(__filename);
     console.log(`\x1b[31mMissing parameter: <text>\x1b[0m\nUsage: node ${filename} <text>`);
