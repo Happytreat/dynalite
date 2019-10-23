@@ -1,0 +1,32 @@
+# docker-compose.yml
+version: "2"
+services:
+    dynalite_backend:
+        build: .
+        depends_on:
+            - dynalite_psql
+        environment:
+            DATABASE_URL: postgres://dynalite:Post3103@dynalite_psql:5432/db
+            ALGORITHM: aes256
+            KEY: cs3103@NUS
+            NODE_ENV: development
+            HOST: "0.0.0.0"
+            PORT: 8080
+        ports:
+            - "3000:8080"
+            - "5683/udp:5683/udp"
+        command: npm start
+        volumes:
+            - .:/app/
+            - /app/node_modules
+
+    dynalite_psql:
+        image: postgres:10.4
+        ports:
+            - "35432:5432"
+        environment:
+            POSTGRES_USER: dynalite
+            POSTGRES_PASSWORD: Post3103
+            POSTGRES_DB: db
+        volumes:
+            - ../setup.sql:/docker-entrypoint-initdb.d/init.sql
