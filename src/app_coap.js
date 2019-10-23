@@ -49,9 +49,11 @@ app_coap.post('/', (req, res) => {
     pl = req.payload;
     console.log(`COAP ${m}, Type: ${type_output}, ID: ${id}, Payload: ${cYellow}${pl}${cReset}`);
 
+    let decrypted;
+
     try {
         const decipher = crypto.createDecipher(algorithm, key);
-        let decrypted = decipher.update(pl.toString('utf8'), 'hex', 'utf8');
+        decrypted = decipher.update(pl.toString('utf8'), 'hex', 'utf8');
         decrypted += decipher.final('utf8');
 
         console.log(`${cYellow}${pl}${cReset} -> ${cGreen}${decrypted}${cReset}`);
@@ -64,6 +66,7 @@ app_coap.post('/', (req, res) => {
     
 	// Construct Specific SQL Query
     let insert_query = `${sql_query} ('${type}', ${id}, '${decrypted}')`;
+
     pool.query(insert_query, (err, result) => {
         if (err) {
             res.code = 500;
