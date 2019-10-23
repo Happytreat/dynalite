@@ -4,11 +4,11 @@ services:
     dynalite_backend:
         build: .
         depends_on:
-            - dynalite_psql
+            - ${DOCKER_APP}
         environment:
-            DATABASE_URL: postgres://dynalite:Post3103@dynalite_psql:5432/db
-            ALGORITHM: aes256
-            KEY: cs3103@NUS
+            DATABASE_URL: ${DATABASE_URL}
+            ALGORITHM: ${ALGORITHM}
+            KEY: ${KEY}
             NODE_ENV: development
             HOST: "0.0.0.0"
             PORT: 8080
@@ -25,8 +25,8 @@ services:
         ports:
             - "35432:5432"
         environment:
-            POSTGRES_USER: dynalite
-            POSTGRES_PASSWORD: Post3103
-            POSTGRES_DB: db
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PW}
+            POSTGRES_DB: ${DB_NAME}
         volumes:
             - ../setup.sql:/docker-entrypoint-initdb.d/init.sql
