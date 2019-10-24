@@ -13,8 +13,8 @@ services:
             HOST: "0.0.0.0"
             PORT: 8080
         ports:
-            - "3000:8080"
-            - "5683/udp:5683/udp"
+            - "38080:8080"
+            - "35683/udp:5683/udp"
         command: npm start
         volumes:
             - .:/app/
