@@ -12,11 +12,12 @@ Web server:
 
 Raspberry Pi:
 
-- To fill
+- //TODO
 
 ## Development guides
 
-- To deploy the web server locally for development purposes, follow the steps in the [local web server deployment guide](DEVELOP_WEB.md).
+- To deploy the web server locally for development purposes, follow the steps in [local web server deployment guide](DEVELOP_WEB.md).
+- To deploy the web server and database using `docker-compose`, follow the steps in the [Docker-compose deployment guide](DEVELOP_DOCKER.md).
 - To setup the Raspberry Pi, view the [Raspberry Pi setup guide](DEVELOP_RASPBERRY_PI.md).
 
 ## Acknowledgements

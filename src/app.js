@@ -1,16 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const favicon = require('serve-favicon');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
 
 require('dotenv').config();
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
 // view engine setup
-var app = express();
+const app = express();
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
