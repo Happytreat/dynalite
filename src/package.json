@@ -1,12 +1,16 @@
 {
   "name": "dynalite_backend",
   "version": "0.0.3",
-  "author": "Evan Tay <evan.it.sg@gmail.com> (https://evantay.com)",
   "contributors": [
     {
       "name": "Melodies Sim",
       "github": "https://github.com/Happytreat",
       "url": "https://melodiessim.netlify.com"
+    },
+    {
+      "name": "Evan Tay",
+      "github": "https://github.com/DigiPie",
+      "url": "https://evantay.com"
     }
   ],
   "repository": {
