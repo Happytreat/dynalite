@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import styled from 'styled-components';
+import BarChart from './components/BarChart';
+import { NavBar } from './components/Navbar';
+import 'antd/dist/antd.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Typography } from 'antd';
+
+const { Title } = Typography;
+
+
+const BarChartWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+`
+
+class App extends Component {
+  render() {
+    // TODO: Get name and version from env
+    console.log('Dynalite client: v1.0.0');
+
+    return (
+      <>
+        <NavBar />
+        <Typography style={{textAlign: 'center', paddingTop: '5rem'}}>
+          <Title level={3}>A project brought to you by Team Dynalite.</Title>
+        </Typography>
+        <BarChartWrapper> 
+          <BarChart />
+        </BarChartWrapper>
+      </>
+    );
+  }
 }
 
 export default App;
