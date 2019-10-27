@@ -1,6 +1,7 @@
 /*
  * Module dependencies.
  */
+import { DB_URI } from './util/secrets';
 const crypto = require('crypto');
 const router = require('coap-router');
 const app_coap = router();
@@ -11,7 +12,7 @@ const app_coap = router();
 /* Database connection */
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: DB_URI
 });
 const sql_query = 'INSERT INTO coap_post (type, id, payload) VALUES';
 /* .dotenv variables */
