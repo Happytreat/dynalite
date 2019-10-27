@@ -32,9 +32,9 @@ export const init = async (eraseDatabaseOnSync) => {
   Occupancy = await loadModels(sequelize);
 
   try {
-    await sequelize.sync({ force: eraseDatabaseOnSync }).then(() =>{
+    await sequelize.sync({ force: eraseDatabaseOnSync }).then(async () =>{
       if (eraseDatabaseOnSync) {
-        seedOccupancyTable(Occupancy);
+        seedOccupancyTable(Occupancy).then(() => console.log("Seeding Database completed."));
       }
     });
   } catch (err) {

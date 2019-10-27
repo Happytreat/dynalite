@@ -25,7 +25,7 @@ export const OccupancyInit = (sequelize, DataTypes) => {
     },
     {
       tableName: "occupancies",
-      sequelize: sequelize
+      sequelize
     }
   );
   return Occupancy;

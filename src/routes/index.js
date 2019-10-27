@@ -18,4 +18,13 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+/* GET all historical occupancies data  */
+router.get('/', function(req, res, next) {
+	pool.query(sql_query, (err, data) => {
+		  res.render('index', { 
+			  data: (data ? data.rows : [])
+		  });
+	  });
+  });
+
 module.exports = router;
