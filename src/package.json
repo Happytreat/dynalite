@@ -1,16 +1,26 @@
 {
   "name": "dynalite_backend",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Evan Tay <evan.it.sg@gmail.com> (https://evantay.com)",
+  "contributors": [
+    {
+      "name": "Melodies Sim",
+      "email": "melodiessim98@gmail.com",
+      "url": "https://melodiessim.netlify.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Happytreat/dynalite.git"
   },
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon --exec babel-node ./bin/www"
   },
   "dependencies": {
+    "@hapi/hapi": "^18.4.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.19.0",
     "coap-router": "^1.0.0",
     "cookie-parser": "~1.4.4",
@@ -24,5 +34,11 @@
     "pg": "^7.12.1",
     "pg-promise": "^9.3.3",
     "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "nodemon": "^1.19.4"
   }
 }
