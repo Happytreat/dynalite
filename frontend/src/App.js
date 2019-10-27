@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
-import BarChart from './components/BarChart';
-import { NavBar } from './components/Navbar';
+import BarChart from './containers/BarChart';
+import { NavBar } from './containers/Navbar';
 import 'antd/dist/antd.css';
 
 import { Typography } from 'antd';

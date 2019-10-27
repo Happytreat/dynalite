@@ -3,6 +3,8 @@ import { Bar } from 'react-chartjs-2';
 import color from 'rcolor';
 import styled from 'styled-components';
 
+import { fetchOccupancyData } from '../dataMethods/fetchData';
+
 const GraphArea = styled.div`
 	width: 1000px;
 	height: 600px;
@@ -24,8 +26,10 @@ const initialState = {
 };
 
 class BarChart extends React.Component {
-	componentWillMount(){
-		this.setState(initialState);
+	async componentWillMount(){
+		this.setState(initialState); 
+		const data = await fetchOccupancyData();
+		console.log(data);
 	}
 
 	render() {
