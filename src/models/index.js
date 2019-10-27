@@ -17,7 +17,7 @@ export const init = async (eraseDatabaseOnSync) => {
   sequelize = new Sequelize(DB_URI, {
     dialect: "postgres",
     dialectOptions: {
-      ssl: true
+      ssl: false
     }
   });
 
