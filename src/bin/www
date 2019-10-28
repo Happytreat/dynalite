@@ -27,7 +27,7 @@ appInit().then((app) => {
 
   // Listen on provided port, on all network interfaces.
   server.listen(port, host, () => {
-    console.log(`${cGreen}[app] the HTTP server is now running at: ${cReset}http://${server.address().address}:${server.address().port}`);
+    console.log(`${cGreen}[app] The HTTP server is now running at: ${cReset}http://${server.address().address}:${server.address().port}`);
   });
   server.on('error', onError);
   server.on('listening', () => onListening(server));
@@ -40,7 +40,7 @@ appInit().then((app) => {
 let server_coap = coap.createServer(app_coap);
 
 server_coap.listen(() => {
-  console.log(`${cGreen}[app] the COAP server is now running.${cReset}`);
+  console.log(`${cGreen}[app] The COAP server is now running.${cReset}`);
 });
 
 /**
