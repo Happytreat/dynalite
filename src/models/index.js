@@ -15,6 +15,7 @@ export const init = async (eraseDatabaseOnSync) => {
   console.log("Attempting connection to database");
 
   sequelize = new Sequelize(DB_URI, {
+    logging: false,
     dialect: "postgres",
     dialectOptions: {
       ssl: false
