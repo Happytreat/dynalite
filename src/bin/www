@@ -11,6 +11,7 @@ const http = require('http');
 /* COAP server */
 const app_coap = require('../app_coap');
 const coap = require('coap');
+
 /* Colours */
 const cGreen = '\x1b[32m';
 const cReset = '\x1b[0m'; // Resets the console colour
@@ -26,7 +27,7 @@ appInit().then((app) => {
 
   // Listen on provided port, on all network interfaces.
   server.listen(port, host, () => {
-    console.log(`${cGreen}The HTTP server is now running at: ${cReset}http://${server.address().address}:${server.address().port}`);
+    console.log(`${cGreen}[app] the HTTP server is now running at: ${cReset}http://${server.address().address}:${server.address().port}`);
   });
   server.on('error', onError);
   server.on('listening', () => onListening(server));
@@ -39,7 +40,7 @@ appInit().then((app) => {
 let server_coap = coap.createServer(app_coap);
 
 server_coap.listen(() => {
-  console.log(`${cGreen}The COAP server is now running.${cReset}`);
+  console.log(`${cGreen}[app] the COAP server is now running.${cReset}`);
 });
 
 /**
