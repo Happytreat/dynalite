@@ -21,6 +21,16 @@ export const dateDiff = (dateEarlier, dateLater) => {
   return dayLater - dayEarlier;
 }
 
+export const dateDiffByHour = (dateEarlier, dateLater) => {
+  // moment.toArray() here parses into [ year, month, day, hours, mins, seconds, milliseconds ]
+  const dayEarlier = dateEarlier.toArray()[3]
+  const dayLater = dateLater.toArray()[3]
+
+  if (dayLater < dayEarlier) {
+    return dayLater + 24 - dayEarlier;
+  }
+  return dayLater - dayEarlier;
+}
 
 /**
  * Takes in occupancy batches data by day in a week
@@ -29,10 +39,24 @@ export const batchOccupancyByDay = (data) => {
   const daysInPeriod = 7;
   const days = times(daysInPeriod, () => []);
   forEach(data, o => {
-    const day = (dateDiff(moment().tz('Asia/Singapore'), moment(o.timestamp).tz('Asia/Singapore'))) % 7;
+    // Monday
+    const day = (dateDiff(moment([2019, 10, 28, 8]).tz('Asia/Singapore'), moment(o.timestamp).tz('Asia/Singapore'))) % 7;
     days[day].push(o);
   })
   return map(days, (day) => sortBy(day, ['timestamp', 'rpiId']));
+}
+
+/**
+ * Takes in occupancy batches data by hour in a week
+ */
+export const batchOccupancyByHour = (data) => {
+  const hoursInPeriod = 24;
+  const hours = times(hoursInPeriod, () => []);
+  forEach(data, o => {
+    const hour = (dateDiffByHour(moment([2019, 10, 28, 8]).tz('Asia/Singapore'), moment(o.timestamp).tz('Asia/Singapore'))) % 24;
+    hours[hour].push(o);
+  })
+  return map(hours, (hour) => sortBy(hour, ['timestamp', 'rpiId']));
 }
 
 /**
