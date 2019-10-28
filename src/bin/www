@@ -36,7 +36,6 @@ appInit().then((app) => {
 /**
  * Create COAP server.
  */
-
 let server_coap = coap.createServer(app_coap);
 
 server_coap.listen(() => {
