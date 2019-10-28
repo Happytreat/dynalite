@@ -2,8 +2,8 @@
  * Module dependencies.
  */
 import { DB_URI } from './util/secrets';
-const crypto = require('crypto');
-const router = require('coap-router');
+import crypto from 'crypto';
+import router from 'coap-router';
 const app_coap = router();
 
 /*

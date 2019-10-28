@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
 import { DB_URI } from '../util/secrets';
+
+const router = express.Router();
 
 const { Pool } = require('pg');
 const pool = new Pool({
