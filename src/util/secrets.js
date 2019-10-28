@@ -21,6 +21,8 @@ if (fs.existsSync(".env")) {
 
 export const NODE_ENV = process.env.NODE_ENV || 'development'; // Default to dev
 
+export const isProduction = NODE_ENV === 'production';
+
 export const DB_URI = process.env.DATABASE_URL || '';
 if (!DB_URI) {
   console.error(`${cRed}[app] DATABASE_URL is not set in '.env'.${cReset}`);

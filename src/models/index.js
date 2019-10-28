@@ -5,6 +5,7 @@ import { DB_URI } from '../util/secrets';
 import { OccupancyInit } from '../models/occupancy';
 import { seedOccupancyTable } from '../seeders/occupancy'; 
 import Sequelize from 'sequelize';
+import { isProduction } from '../util/secrets';
 
 /*
  * Setup
@@ -47,7 +48,7 @@ export const init = async (eraseDatabaseOnSync) => {
 
   try {
     await sequelize.sync({ force: eraseDatabaseOnSync }).then(async () =>{
-      if (eraseDatabaseOnSync) {
+      if (!isProduction && eraseDatabaseOnSync) {
         seedOccupancyTable(Occupancy).then(() => console.log(`${cBlue}[db] Seeding Database completed.${cReset}`));
       }
     });

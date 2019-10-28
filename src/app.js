@@ -7,13 +7,14 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import { init as databaseInit } from './models';
+import { isProduction } from './util/secrets';
 require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 
 const appInit = async () => {
-
-  const eraseDatabaseOnSync = true;
+  // only in dev mode erase db on sync
+  const eraseDatabaseOnSync = !isProduction;
   await databaseInit(eraseDatabaseOnSync);
 
   // view engine setup
