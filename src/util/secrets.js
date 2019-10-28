@@ -27,4 +27,16 @@ if (!DB_URI) {
   process.exit(1);
 }
 
+export const ALGORITHM = process.env.ALGORITHM || '';
+if (!ALGORITHM) {
+  console.error(`${cRed}[app] ALGORITHM is not set in '.env'.${cReset}`);
+  process.exit(1);
+}
+
+export const KEY = process.env.KEY || '';
+if (!KEY) {
+  console.error(`${cRed}[app] KEY is not set in '.env'.${cReset}`);
+  process.exit(1);
+}
+
 console.log(`${cGreen}[app] Using '.env' file for environment variables.${cReset}`);

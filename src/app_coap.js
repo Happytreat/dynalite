@@ -1,7 +1,7 @@
 /*
  * Module dependencies.
  */
-import { DB_URI } from './util/secrets';
+import { ALGORITHM, DB_URI, KEY } from './util/secrets';
 import crypto from 'crypto';
 import router from 'coap-router';
 const app_coap = router();
@@ -15,9 +15,6 @@ const pool = new Pool({
   connectionString: DB_URI
 });
 const sql_query = 'INSERT INTO occupancies (type, id, payload) VALUES';
-/* .dotenv variables */
-const algorithm = process.env.ALGORITHM;
-const key = process.env.KEY;
 /* Colours */
 const cRed = '\x1b[31m';
 const cGreen = '\x1b[32m';
@@ -53,7 +50,7 @@ app_coap.post('/', (req, res) => {
     let decrypted;
 
     try {
-        const decipher = crypto.createDecipher(algorithm, key);
+        const decipher = crypto.createDecipher(ALGORITHM, KEY);
         decrypted = decipher.update(pl.toString('utf8'), 'hex', 'utf8');
         decrypted += decipher.final('utf8');
 
