@@ -19,7 +19,7 @@ if (fs.existsSync(".env")) {
   console.error(`${cRed}[app] No '.env' file found.${cReset}`);
 }
 
-export const ENVIRONMENT = process.env.NODE_ENV || 'development'; // Default to dev
+export const NODE_ENV = process.env.NODE_ENV || 'development'; // Default to dev
 
 export const DB_URI = process.env.DATABASE_URL || '';
 if (!DB_URI) {
