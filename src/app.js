@@ -7,7 +7,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import { init as databaseInit } from './models';
-require('dotenv').config();
+import 'dotenv';
 
 const indexRouter = require('./routes/index');
 

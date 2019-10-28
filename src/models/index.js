@@ -42,7 +42,7 @@ export const init = async (eraseDatabaseOnSync) => {
     console.error("Error syncing with database:", err);
     process.exit(1);
   }
-  console.log("Database sync successful");
+  console.log("Database sync successful.");
 };
 
 export default Occupancy;
