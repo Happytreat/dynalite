@@ -1,6 +1,7 @@
 import faker from 'faker';
+import { Occupancy } from '../models/index';
 
-const createFakeOccupancy = async (Occupancy) => {
+const createFakeOccupancy = async () => {
     return Occupancy.create(
         {
             rpiId: faker.random.uuid(),
@@ -10,8 +11,8 @@ const createFakeOccupancy = async (Occupancy) => {
       )
 }
 
-export const seedOccupancyTable = async (Occupancy) => {
+export const seedOccupancyTable = async () => {
     const numberOfData = 1000;
     const _ = Array.apply(null, Array(numberOfData)).map(function () {});
-    return Promise.all(_.map(() => createFakeOccupancy(Occupancy)))
+    return Promise.all(_.map(() => createFakeOccupancy()))
 }
