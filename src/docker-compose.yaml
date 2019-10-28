@@ -9,7 +9,7 @@ services:
             DATABASE_URL: ${DATABASE_URL}
             ALGORITHM: ${ALGORITHM}
             KEY: ${KEY}
-            NODE_ENV: ${MODE}
+            NODE_ENV: ${NODE_ENV}
             HOST: "0.0.0.0"
             PORT: 8080
         ports:
