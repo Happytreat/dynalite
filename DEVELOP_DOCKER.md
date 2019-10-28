@@ -8,6 +8,7 @@ To deploy:
 3. Open _.env_ and enter the following: `vim .env`
 
 ```
+MODE=development
 DATABASE_URL=postgres://<username>:<password>@<hostname>:<port>/<database_name>
 ALGORITHM=<algorithm>
 KEY=<key>
