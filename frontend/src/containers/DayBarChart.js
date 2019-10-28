@@ -12,7 +12,7 @@ const GraphArea = styled.div`
 	height: 600px;
 `
 
-class BarChart extends React.Component {
+class BarChartByDay extends React.Component {
 	constructor() {
 		super()
 		this.state = {
@@ -29,7 +29,7 @@ class BarChart extends React.Component {
 		this.getUpdatedData().then(data => this.setState({
 			datasets: [
 				{
-					label: 'Room Occupancy',
+					label: 'Room Occupancy by Day',
 					backgroundColor: color(),
 					borderColor: color(),
 					borderWidth: 1,
@@ -50,4 +50,4 @@ class BarChart extends React.Component {
 	}
 }
 
-export default BarChart;
+export default BarChartByDay;

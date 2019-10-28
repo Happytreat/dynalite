@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
-import styled from 'styled-components';
-import BarChart from './containers/BarChart';
-import { NavBar } from './containers/Navbar';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import BarChartbyDay from './pages/ByDay';
+import BarChartbyHour from './pages/ByHour';
 import 'antd/dist/antd.css';
-
-import { Typography } from 'antd';
-
-const { Title } = Typography;
-
-
-const BarChartWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5rem;
-`
 
 class App extends Component {
   render() {
@@ -22,15 +10,13 @@ class App extends Component {
     console.log('Dynalite client: v1.0.0');
 
     return (
-      <>
-        <NavBar />
-        <Typography style={{textAlign: 'center', paddingTop: '5rem'}}>
-          <Title level={3}>A project brought to you by Team Dynalite.</Title>
-        </Typography>
-        <BarChartWrapper> 
-          <BarChart />
-        </BarChartWrapper>
-      </>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/day' component={BarChartbyDay}/>
+          <Route exact path='/hour' component={BarChartbyHour}/>
+          <Route component={BarChartbyDay} /> 
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

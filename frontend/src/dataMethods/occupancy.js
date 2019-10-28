@@ -1,4 +1,4 @@
-import { times, forEach, map, sortBy } from 'lodash';
+import { times, forEach, map, sortBy, round } from 'lodash';
 import moment from 'moment-timezone';
 import axios from 'axios';
 
@@ -50,6 +50,6 @@ export const exportOccupancyData = (batch) => {
     let percent = occupied/total
     occupied = 0
     total = 1
-    return percent
+    return round(percent, 2)
   })
 }
