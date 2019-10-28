@@ -7,12 +7,13 @@ This project was built using the following technologies:
 Web server:
 
 - Back-end: NodeJS, ExpressJS, PostgreSQL
-- Front-end: JQuery, Bootstrap
+- Front-end: React
 - Communication: NodeJS-COAP
 
 Raspberry Pi:
 
-- //TODO
+- Python 
+//TODO
 
 ## Development guides
 
