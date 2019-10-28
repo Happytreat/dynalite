@@ -14,7 +14,7 @@ const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: DB_URI
 });
-const sql_query = 'INSERT INTO coap_post (type, id, payload) VALUES';
+const sql_query = 'INSERT INTO occupancies (type, id, payload) VALUES';
 /* .dotenv variables */
 const algorithm = process.env.ALGORITHM;
 const key = process.env.KEY;
