@@ -1,20 +1,12 @@
 /*
  * Module dependencies.
  */
-import { ALGORITHM, DB_URI, KEY } from './util/secrets';
+import { ALGORITHM, KEY } from './util/secrets';
 import crypto from 'crypto';
 import router from 'coap-router';
+import { Occupancy as occupancies } from './models/index';
 const app_coap = router();
 
-/*
- * Setup
- */
-/* Database connection */
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: DB_URI
-});
-const sql_query = 'INSERT INTO occupancies (type, id, payload) VALUES';
 /* Colours */
 const cRed = '\x1b[31m';
 const cGreen = '\x1b[32m';
@@ -26,7 +18,7 @@ const cReset = '\x1b[0m'; // Resets the console colour
  * the database if message is successfully decrypted and authenticated.
  */
 app_coap.post('/', (req, res) => {
-    let type; // For console display usage
+    let type, type_output; // For console display usage
     if (req._packet.reset) {
         type = 'Reset (3)';
         type_output = `${cRed}${type}${cReset}`;
@@ -42,9 +34,9 @@ app_coap.post('/', (req, res) => {
         type_output = `${cGreen}${type}${cReset}`;
     }
 
-    m = req.method;
-    id = req._packet.messageId;
-    pl = req.payload;
+    const m = req.method;
+    const id = req._packet.messageId;
+    const pl = req.payload;
     console.log(`COAP ${m}, Type: ${type_output}, ID: ${id}, Payload: ${cYellow}${pl}${cReset}`);
 
     let decrypted;
@@ -63,7 +55,7 @@ app_coap.post('/', (req, res) => {
     }
     
     try {
-        JSON.parse(decrypted);
+        decrypted = JSON.parse(decrypted);
     } catch (err) {
         res.code = 400; // Bad request
         console.log(`${cRed}Client error:${cReset} Payload is not JSON object\n` 
@@ -71,21 +63,26 @@ app_coap.post('/', (req, res) => {
         return res.end('Bad request: Payload is not JSON object');
     }
 
-	// Construct Specific SQL Query
-    let insert_query = `${sql_query} ('${type}', ${id}, '${decrypted}')`;
+    const { rpiId, timestamp, isOccupied } = decrypted;
 
-    pool.query(insert_query, (err, result) => {
-        if (err) {
-            res.code = 500; // Internal server error
-            console.log(`${cRed}Server error:${cReset} SQL insert failed\n` 
-                    + `Replied with ${cRed}COAP code 5.00${cReset}\n${err.message}`);
-            return res.end('Internal Server Error: SQL insert failed');
-        } else {
+    return occupancies.create({
+        rpiId,
+        timestamp,
+        isOccupied
+    }).then((occupancy) => {
+        if (occupancy) {
             res.code = 200; // Success ACK
             console.log(`${cGreen}Success${cReset}: Inserted payload into database.\n`
                     + `Replied with ${cGreen}COAP code 2.00${cReset}`);
             return res.end('OK: Inserted payload into database.');
+        } else {
+            response.status(400).send('Error in insert new record: check payload fields');
         }
+    }).catch(err => {
+        res.code = 500; // Internal server error
+        console.log(`${cRed}Server error:${cReset} SQL insert failed\n` 
+                    + `Replied with ${cRed}COAP code 5.00${cReset}\n${err.message}`);
+        return res.end('Internal Server Error: SQL insert failed');
     });
 });
 
