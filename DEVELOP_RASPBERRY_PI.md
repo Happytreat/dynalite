@@ -7,8 +7,8 @@ The scripts to be deployed on the Raspberry Pis can be found in rpi/aiocoap-impl
 
 ### The RPi circuit setup
 The connection of the LDR to the RPi can be seen in these images:
-![RPi circuit 1](./images/rpi-circuit-1.jpg?raw=true)
-![RPi circuit 2](./images/rpi-circuit-2.jpg?raw=true)
+![RPi circuit 1](images/rpi-circuit-1.jpg?raw=true)
+![RPi circuit 2](images/rpi-circuit-2.jpg?raw=true)
 
 ### Setting up the environment
 Update the `rpi/aiocoap-implementation/.env` and `rpi/aiocoap-implementation/tests/.env` files to the correct information (RPI_ID and KEY).
