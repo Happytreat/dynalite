@@ -35,3 +35,4 @@ def get_enc_key():
         if m:
             return m.group(1).strip()
     return -1
+    
