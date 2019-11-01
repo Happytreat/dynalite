@@ -61,19 +61,18 @@ for (i = 0; i < parameters.length; i += 2) {
 let text = JSON.stringify(json_payload);
 
 /*
- * Encryption
- */
-const cipher = crypto.createCipher(algorithm, key);
-let encrypted = cipher.update(text, 'utf8', 'hex');
-encrypted += cipher.final('hex');
+* Encryption
+*/
+const iv = '0000000000000000';
+const cipher = crypto.createCipheriv(algorithm, key, iv);  
+const encrypted = cipher.update(text, 'utf8', 'base64') + cipher.final('base64');
 console.log(`Encrypted message:\t${cYellow}${encrypted}${cReset}`);
 
 /*
- * Decryption
- */
-const decipher = crypto.createDecipher(algorithm, key);
+* Decryption
+*/
+const decipher = crypto.createDecipheriv(algorithm, key, iv);
 decipher.setAutoPadding(false);
-let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-decrypted += decipher.final('utf8');
+let decrypted = decipher.update(encrypted, 'base64', 'utf8') + decipher.final('utf8');
 decrypted = decrypted.trim();
 console.log(`Decrypted message:\t${cGreen}${decrypted}${cReset}`);

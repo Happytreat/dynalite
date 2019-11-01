@@ -1,8 +1,17 @@
 # Raspberry Pi setup guide
-These are the scripts to run on the actual raspberry pis.
+The scripts to be deployed on the Raspberry Pis can be found in rpi/aiocoap-implementation. We are using [aiocoap](https://github.com/chrysn/aiocoap).
 
-- To run without DTLS, install `txthings` using `pip`. Then, run `python light-client.py`. This is in python2 because of Twisted [not being fully ported](https://twistedmatrix.com/documents/14.0.2/core/howto/python3.html). txThings does not have support for DTLS yet.
-- To run with DTLS, install the development version of `aiocoap` by following the instructions [here](https://aiocoap.readthedocs.io/en/latest/installation.html). Then, run `python3 light-client-dtls.py`. This script is in python3.
-- `rpi.py` just contains a capacitor-reading code. It uses time to convert digital signals from the Raspberry Pi to analog signals. The full tutorial is [here](https://www.youtube.com/watch?v=dPwW9zmX84E). 
-- To run on an actual Pi and read from the GPIO pin, uncomment the GPIO portions. For testing on laptops, there will be no `RPi.GPIO` module.
-- The connection on the RaspberryPi is just the Pi, photoresistor and a capacitor in series. Without a capacitor, the code can still run but only reading digital signals (it can tell there is light, but not how much light).
+### The RPi setup
+* Make sure the SD card you're booting the RPi on has a file named `ssl` to enable ssl.
+* Ensure the RPi has python3 installed, as well as pycrypto and aiocoap.
+
+### The RPi circuit setup
+The connection of the LDR to the RPi can be seen in these images:
+![RPi circuit 1](images/rpi-circuit-1.jpg?raw=true)
+![RPi circuit 2](images/rpi-circuit-2.jpg?raw=true)
+
+### Setting up the environment
+Update the `rpi/aiocoap-implementation/.env` and `rpi/aiocoap-implementation/tests/.env` files to the correct information (RPI_ID and KEY).
+
+### The Code
+You can execute the code by running rpi/aiocoap-implementation/app.py with python3. 
