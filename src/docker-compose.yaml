@@ -9,7 +9,7 @@ services:
             DATABASE_URL: ${DATABASE_URL}
             ALGORITHM: ${ALGORITHM}
             KEY: ${KEY}
-            NODE_ENV: development
+            NODE_ENV: ${NODE_ENV}
             HOST: "0.0.0.0"
             PORT: 8080
         ports:
@@ -28,5 +28,3 @@ services:
             POSTGRES_USER: ${DB_USER}
             POSTGRES_PASSWORD: ${DB_PW}
             POSTGRES_DB: ${DB_NAME}
-        volumes:
-            - ../setup.sql:/docker-entrypoint-initdb.d/init.sql

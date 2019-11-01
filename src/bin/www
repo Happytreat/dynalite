@@ -4,12 +4,14 @@
  * Module dependencies.
  */
 /* HTTP server */
-const app = require('../app');
+const appInit = require('../app');
 const debug = require('debug')('src:server');
 const http = require('http');
+
 /* COAP server */
 const app_coap = require('../app_coap');
 const coap = require('coap');
+
 /* Colours */
 const cGreen = '\x1b[32m';
 const cReset = '\x1b[0m'; // Resets the console colour
@@ -17,28 +19,28 @@ const cReset = '\x1b[0m'; // Resets the console colour
 /**
  * Create HTTP server.
  */
-let host = (process.env.HOST || '127.0.0.1');
-let port = normalizePort(process.env.PORT || '8080');
-app.set('port', port);
-let server = http.createServer(app);
+appInit().then((app) => {
+  const host = (process.env.HOST || '127.0.0.1');
+  const port = normalizePort(process.env.PORT || '8080');
+  app.set('port', port);
+  const server = http.createServer(app);
 
-// Listen on provided port, on all network interfaces.
-server.listen(port, host, () => {
-  console.log(`The HTTP server is now running at: ${cGreen}http://${server.address().address}:` 
-      + `${server.address().port}${cReset}`);
+  // Listen on provided port, on all network interfaces.
+  server.listen(port, host, () => {
+    console.log(`${cGreen}[app] The HTTP server is now running at: ${cReset}http://${server.address().address}:${server.address().port}`);
+  });
+  server.on('error', (err) => onError(err, port));
+  server.on('listening', () => onListening(server));
 });
 
-server.on('error', onError);
-server.on('listening', onListening);
 
 /**
  * Create COAP server.
  */
-
 let server_coap = coap.createServer(app_coap);
 
 server_coap.listen(() => {
-  console.log('The COAP server is now running.');
+  console.log(`${cGreen}[app] The COAP server is now running.${cReset}`);
 });
 
 /**
@@ -65,7 +67,7 @@ function normalizePort(val) {
  * Event listener for HTTP server 'error' event.
  */
 
-function onError(error) {
+function onError(error, port) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -93,8 +95,8 @@ function onError(error) {
  * Event listener for HTTP server 'listening' event.
  */
 
-function onListening() {
-  let addr = server.address();
+function onListening(server) {
+  const addr = server.address();
   let bind = typeof addr === 'string'
     ? `pipe ${addr}`
     : `port ${addr.port}`;

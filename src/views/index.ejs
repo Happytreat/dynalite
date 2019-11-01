@@ -14,17 +14,17 @@
                     <caption>Received COAP messages</caption>
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Type</th>
-                            <th scope="col">ID</th>
-                            <th style="max-width: 10%" scope="col">Payload</th>
+                            <th scope="col">Room Id</th>
+                            <th scope="col">Time</th>
+                            <th style="max-width: 10%" scope="col">isOccupied</th>
                         </tr>
                     </thead>
                     <% for(var i = 0; i < data.length; i++) { %>
                         <tr>
-                            <td><%= data[i].type %></td>
-                            <td><%= data[i].id %></td>
+                            <td><%= data[i].rpiId %></td>
+                            <td><%= data[i].timestamp %></td>
                             <td>
-                                <%= JSON.stringify(data[i].payload) %>
+                                <%= data[i].isOccupied %>
                             </td>
                         </tr>
                     <% } %>
