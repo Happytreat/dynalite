@@ -52,9 +52,14 @@ app_coap.post('/', (req, res) => {
     let decrypted;
 
     try {
-        const decipher = crypto.createDecipher(algorithm, key);
-        decrypted = decipher.update(pl.toString('utf8'), 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
+        //IV set to all 0 for now
+        const iv = '0000000000000000';
+        //createDecipher is deprecated, using createDecipheriv instead
+        const decipher = crypto.createDecipheriv(algorithm, key, iv);
+        decipher.setAutoPadding(false);
+        //To confirm that this works, data is sent from RPi as base64
+        let decrypted = decipher.update(pl.toString('utf8'), 'base64', 'utf8') + decipher.final('utf8');
+        decrypted = decrypted.trim();
 
         console.log(`${cYellow}${pl}${cReset} -> ${cGreen}${decrypted}${cReset}`);
     } catch (err) {

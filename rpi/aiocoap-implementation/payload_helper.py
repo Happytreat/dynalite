@@ -1,27 +1,36 @@
 import base64
+import codecs
 import datetime
 
 from Crypto.Cipher import AES # pip install pycrypto
 
 # https://dmyz.org/en/archives/1182
-def _pad(s): 
-    return s + (AES.block_size - len(s) % AES.block_size) * chr(AES.block_size - len(s) % AES.block_size) 
+# https://stackoverflow.com/questions/33156474/encrypt-using-node-js-crypto-aes256-and-decrypt-using-python2-7-pycrypto
 
-def _cipher(enc_key):
-    # IV should not be all 0s btw but since server-side's IV is nothing we'll do the same
-    iv = b'0000000000000000'
-    return AES.new(key=enc_key, mode=AES.MODE_CBC, IV=iv)
+BS = 16
 
-def encrypt_token(enc_key, data):
-    return _cipher(enc_key).encrypt(_pad(data))
+def pad(data):
+    padding = BS - len(data) % BS
+    return data + padding * chr(padding)
 
-def encrypt_payload(enc_key, data):
-    return base64.b64encode(encrypt_token(enc_key, data))
+def unpad(data):
+    return data[0:-ord(data[-1])]
 
-def build_payload(rpi_id, is_occupied):
+def decrypt_node(hex_data, key='0'*32, iv='0'*16):
+    data = ''.join(map(chr, bytearray.fromhex(hex_data)))
+    aes = AES.new(key, AES.MODE_CBC, iv)
+    return unpad(aes.decrypt(data))
+
+def encrypt_node(data, key='0'*32, iv='0'*16):
+    aes = AES.new(key, AES.MODE_CBC, iv)
+    return codecs.encode(aes.encrypt(pad(data)),'base64')
+
+def build_encrypted_payload(rpi_id, key, is_occupied):
     """
-    Helper function to build payload
+    Helper function to build encrypted payload
     """
     time_now = datetime.datetime.now()
     timestamp = time_now.strftime("%Y-%m-%d %H:%M:%S")
-    return '{{"rpi_id": {0}, "timestamp": "{1}", "isOccupied": {2}}}'.format(rpi_id, timestamp, is_occupied)
+    payload = '{{"rpi_id": {0}, "timestamp": "{1}", "isOccupied": {2}}}'.format(rpi_id, timestamp, is_occupied)
+    print (payload)
+    return encrypt_node(payload, key)

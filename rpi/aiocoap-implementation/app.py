@@ -10,9 +10,11 @@ import logging
 from aiocoap_helper import coap_post
 from constants import COAP_RECEIVER_URI, TIME_INTERVAL, LIGHT_SENSOR_INTERVAL, LIGHT_SENSOR_ITERATIONS, get_enc_key, get_rpi_id
 from light_sensor import get_light_value
-from payload_helper import build_payload, encrypt_payload
+from payload_helper import build_encrypted_payload
 
 logging.basicConfig(level=logging.INFO)
+ENC_KEY = get_enc_key()
+RPI_ID = get_rpi_id()
 
 async def main():
     """
@@ -35,7 +37,8 @@ async def main():
         is_occupied = round(light_value_sum / LIGHT_SENSOR_ITERATIONS)
         
         # Prepare payload
-        payload = encrypt_payload(ENC_KEY, build_payload(RPI_ID, is_occupied))
+        payload = build_encrypted_payload(RPI_ID, ENC_KEY, is_occupied)
+        print(payload)
         
         # Keep attempting to send payload until we manage to do so
         while True:
