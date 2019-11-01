@@ -76,13 +76,16 @@ app_coap.post('/', (req, res) => {
                     + `Replied with ${cGreen}COAP code 2.00${cReset}`);
             return res.end('OK: Inserted payload into database.');
         } else {
-            response.status(400).send('Error in insert new record: check payload fields');
+            res.code = 400; // Bad request
+            console.log(`${cRed}Client error:${cReset} Incorrect or missing JSON payload fields.\n` 
+                    + `Replied with ${cRed}COAP code 4.00${cReset}`);
+            return res.end('Bad request: Incorrect or missing JSON payload fields.');
         }
     }).catch(err => {
         res.code = 500; // Internal server error
-        console.log(`${cRed}Server error:${cReset} SQL insert failed\n` 
-                    + `Replied with ${cRed}COAP code 5.00${cReset}\n${err.message}`);
-        return res.end('Internal Server Error: SQL insert failed');
+        console.log(`${cRed}Server error:${cReset} SQL insert failed.\n` 
+                    + `Replied with ${cRed}COAP code 5.00${cReset}.\n${err.message}`);
+        return res.end(`${cRed}Internal Server Error: SQL insert failed.${cReset}`);
     });
 });
 
