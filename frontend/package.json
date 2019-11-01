@@ -1,7 +1,18 @@
 {
   "name": "dynalite_frontend",
   "version": "1.0.0",
-  "author": "Melodies Sim <https://github.com/Happytreat> (https://melodiessim.netlify.com)",
+  "contributors": [
+    {
+      "name": "Melodies Sim",
+      "github": "https://github.com/Happytreat",
+      "url": "https://melodiessim.netlify.com"
+    },
+    {
+      "name": "Evan Tay",
+      "github": "https://github.com/DigiPie",
+      "url": "https://evantay.com"
+    }
+  ],
   "private": false,
   "dependencies": {
     "antd": "^3.24.2",
