@@ -31,6 +31,6 @@ def build_encrypted_payload(rpi_id, key, is_occupied):
     """
     time_now = datetime.datetime.now()
     timestamp = time_now.strftime("%Y-%m-%d %H:%M:%S")
-    payload = '{{"rpi_id": {0}, "timestamp": "{1}", "isOccupied": {2}}}'.format(rpi_id, timestamp, is_occupied)
+    payload = '{{"rpiId": {0}, "timestamp": "{1}", "isOccupied": {2}}}'.format(rpi_id, timestamp, is_occupied)
     print (payload)
     return encrypt_node(payload, key)
