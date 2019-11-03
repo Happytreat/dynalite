@@ -8,7 +8,7 @@ import asyncio
 import logging
 
 from aiocoap_helper import coap_post
-from constants import COAP_RECEIVER_URI, TIME_INTERVAL, LIGHT_SENSOR_INTERVAL, LIGHT_SENSOR_ITERATIONS, get_enc_key, get_rpi_id
+from constants import COAP_RECEIVER_URI, TIME_INTERVAL, LIGHT_SENSOR_INTERVAL, LIGHT_SENSOR_ITERATIONS, MAX_SEND_FAIL_COUNT, get_enc_key, get_rpi_id
 from light_sensor import get_light_value
 from payload_helper import build_encrypted_payload
 
@@ -41,14 +41,20 @@ async def main():
         print(payload)
         
         # Keep attempting to send payload until we manage to do so
+        fail_count = 0
         while True:
             try:
-                response = await coap_post(COAP_RECEIVER_URI, payload)
-                # Print response (for logging purposes)
-                print('Response from server: %s\n%r'%(response.code, response.payload))
-                break
+                if (fail_count <= MAX_SEND_FAIL_COUNT):
+                    response = await coap_post(COAP_RECEIVER_URI, payload.decode('utf-8'))
+                    # Print response (for logging purposes)
+                    print('Response from server: %s\n%r'%(response.code, response.payload))
+                    break
+                else:
+                    print('Failed to send too many times, terminating...')
+                    return
             except Exception as e:
-                print(e)
+                print('Exception', e)
+                fail_count += 1
 
 if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(main())
