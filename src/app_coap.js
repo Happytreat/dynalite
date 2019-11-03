@@ -1,22 +1,12 @@
 /*
  * Module dependencies.
  */
-const crypto = require('crypto');
-const router = require('coap-router');
+import { ALGORITHM, KEY } from './util/secrets';
+import crypto from 'crypto';
+import router from 'coap-router';
+import { Occupancy as occupancies } from './models/index';
 const app_coap = router();
 
-/*
- * Setup
- */
-/* Database connection */
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
-});
-const sql_query = 'INSERT INTO coap_post (type, id, payload) VALUES';
-/* .dotenv variables */
-const algorithm = process.env.ALGORITHM;
-const key = process.env.KEY;
 /* Colours */
 const cRed = '\x1b[31m';
 const cGreen = '\x1b[32m';
@@ -28,7 +18,7 @@ const cReset = '\x1b[0m'; // Resets the console colour
  * the database if message is successfully decrypted and authenticated.
  */
 app_coap.post('/', (req, res) => {
-    let type; // For console display usage
+    let type, type_output; // For console display usage
     if (req._packet.reset) {
         type = 'Reset (3)';
         type_output = `${cRed}${type}${cReset}`;
@@ -44,9 +34,9 @@ app_coap.post('/', (req, res) => {
         type_output = `${cGreen}${type}${cReset}`;
     }
 
-    m = req.method;
-    id = req._packet.messageId;
-    pl = req.payload;
+    const m = req.method;
+    const id = req._packet.messageId;
+    const pl = req.payload;
     console.log(`COAP ${m}, Type: ${type_output}, ID: ${id}, Payload: ${cYellow}${pl}${cReset}`);
 
     let decrypted;
@@ -55,7 +45,7 @@ app_coap.post('/', (req, res) => {
         //IV set to all 0 for now
         const iv = '0000000000000000';
         //createDecipher is deprecated, using createDecipheriv instead
-        const decipher = crypto.createDecipheriv(algorithm, key, iv);
+        const decipher = crypto.createDecipheriv(ALGORITHM, key, iv);
         decipher.setAutoPadding(false);
         //To confirm that this works, data is sent from RPi as base64
         decrypted = decipher.update(pl.toString('utf8'), 'base64', 'utf8') + decipher.final('utf8');
@@ -71,7 +61,7 @@ app_coap.post('/', (req, res) => {
     }
     
     try {
-        JSON.parse(decrypted);
+        decrypted = JSON.parse(decrypted);
     } catch (err) {
         res.code = 400; // Bad request
         console.log(`${cRed}Client error:${cReset} Payload is not JSON object\n` 
@@ -79,21 +69,29 @@ app_coap.post('/', (req, res) => {
         return res.end('Bad request: Payload is not JSON object');
     }
 
-	// Construct Specific SQL Query
-    let insert_query = `${sql_query} ('${type}', ${id}, '${decrypted}')`;
+    const { rpiId, timestamp, isOccupied } = decrypted;
 
-    pool.query(insert_query, (err, result) => {
-        if (err) {
-            res.code = 500; // Internal server error
-            console.log(`${cRed}Server error:${cReset} SQL insert failed\n` 
-                    + `Replied with ${cRed}COAP code 5.00${cReset}\n${err.message}`);
-            return res.end('Internal Server Error: SQL insert failed');
-        } else {
+    return occupancies.create({
+        rpiId,
+        timestamp,
+        isOccupied
+    }).then((occupancy) => {
+        if (occupancy) {
             res.code = 200; // Success ACK
             console.log(`${cGreen}Success${cReset}: Inserted payload into database.\n`
                     + `Replied with ${cGreen}COAP code 2.00${cReset}`);
             return res.end('OK: Inserted payload into database.');
+        } else {
+            res.code = 400; // Bad request
+            console.log(`${cRed}Client error:${cReset} Incorrect or missing JSON payload fields.\n` 
+                    + `Replied with ${cRed}COAP code 4.00${cReset}`);
+            return res.end('Bad request: Incorrect or missing JSON payload fields.');
         }
+    }).catch(err => {
+        res.code = 500; // Internal server error
+        console.log(`${cRed}Server error:${cReset} SQL insert failed.\n` 
+                    + `Replied with ${cRed}COAP code 5.00${cReset}.\n${err.message}`);
+        return res.end(`${cRed}Internal Server Error: SQL insert failed.${cReset}`);
     });
 });
 

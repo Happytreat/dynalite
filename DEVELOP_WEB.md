@@ -6,12 +6,6 @@
 3. Clone this repository (e.g. enter `git clone https://github.com/Happytreat/dynalite.git` in your command-line terminal).
 4. Change directory to the newly created _dynalite_ directory by entering `cd dynalite`.
 
-## Database setup
-
-1. Log into **psql** by entering `psql -U username -d database`. Replace the fields accordingly (e.g. `psql -U postgres -d postgres`).
-2. Execute _setup.sql_ by running the command `\i setup.sql`.
-7. Exit **psql** by entering `\q`.
-
 ## NodeJS setup
 
 1. Change directory to the _src_ folder by entering the command `cd src`.
@@ -25,7 +19,7 @@ KEY=<key>
 ```
 Replace the fields in `< >` accordingly.
 
-Example:
+Example (not actual fields):
 ```
 DATABASE_URL=postgres://postgres:password@localhost:5432/postgres
 ALGORITHM=aes-128-cbc
@@ -44,3 +38,7 @@ KEY=helloWorldSecureKey21
 1. To test Dynalite without a Raspberry Pi, refer to [COAP-CLI](https://github.com/avency/coap-cli). An example command would be: `coap post coap://localhost/ -p "Hello COAP"`.
 2. Dynalite receives POST COAP messages at `coap://localhost/` which are stored in a PostgreSQL table.
 3. Dynalite displays these stored messages at `http://localhost:3000/`.
+
+## Testing COAP Post Endpoint 
+1. Encrypt your payload: `node ./test/crypto_test.js '{"rpiId":"Room1","timestamp":"Mon Oct 28 2019 21:20:20 GMT+0800 (Singapore Standard Time)","isOccupied":false}'`
+2. Send encrypted output through coap: `coap post coap://localhost/ -p <output from step_1>`

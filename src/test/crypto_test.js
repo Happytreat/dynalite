@@ -3,19 +3,20 @@
  * To use, create a .env file containing ALGORITHM and KEY (e.g. ALGORITHM=des, KEY=applepen).
  * Update dotenv_path to the location of the .env file.
  * Remember to npm install crypto and dotenv modules.
- * To run this script, type 'node test_crypto.js <text>' where <text> is the text to be encrypted.
+ * To run this script, type 'node crypto_test.js <text>' where <text> is the text to be encrypted.
  */
 /*
  * Module dependencies.
  */
-const path = require('path');
-const crypto = require('crypto');
+crypto = require('crypto');
+dotenv =  require('dotenv');
+path = require('path');
 /*
  * Setup
  */
 /* .dotenv variables */
 const dotenv_path = '../.env'; // Modify if necessary
-require('dotenv').config({path: dotenv_path});
+dotenv.config({path: dotenv_path});
 const algorithm = process.env.ALGORITHM;
 const key = process.env.KEY;
 /* Colours */

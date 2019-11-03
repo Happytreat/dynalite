@@ -8,14 +8,15 @@
 /*
  * Module dependencies.
  */
-const path = require('path');
-const crypto = require('crypto');
+crypto = require('crypto');
+dotenv =  require('dotenv');
+path = require('path');
 /*
  * Setup
  */
 /* .dotenv variables */
 const dotenv_path = '../.env'; // Modify if necessary
-require('dotenv').config({path: dotenv_path});
+dotenv.config({path: dotenv_path});
 const algorithm = process.env.ALGORITHM;
 const key = process.env.KEY;
 /* Colours */
