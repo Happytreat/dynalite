@@ -58,9 +58,10 @@ app_coap.post('/', (req, res) => {
         const decipher = crypto.createDecipheriv(algorithm, key, iv);
         decipher.setAutoPadding(false);
         //To confirm that this works, data is sent from RPi as base64
-        let decrypted = decipher.update(pl.toString('utf8'), 'base64', 'utf8') + decipher.final('utf8');
+        decrypted = decipher.update(pl.toString('utf8'), 'base64', 'utf8') + decipher.final('utf8');
         decrypted = decrypted.trim();
-
+        //Remove padding from encryption if any
+        decrypted = decrypted.substr(0, decrypted.lastIndexOf('}') + 1);
         console.log(`${cYellow}${pl}${cReset} -> ${cGreen}${decrypted}${cReset}`);
     } catch (err) {
         res.code = 401; // Unauthorized
