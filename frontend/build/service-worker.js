@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tech/dynalite/precache-manifest.45ea763b0cde77aab03a3645e94d6c71.js"
+  "/tech/dynalite/precache-manifest.bb77390d01baee040fe1d21fd8535842.js"
 );
 
 self.addEventListener('message', (event) => {
