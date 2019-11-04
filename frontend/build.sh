@@ -6,3 +6,6 @@
 # Example: PUBLIC_URL= https://www.evantay.com/tech/react-node-docker/
 npm i
 npm run build
+
+# Rebuild image
+docker build -t dynalite_frontend --no-cache .

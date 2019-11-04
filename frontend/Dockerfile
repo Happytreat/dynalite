@@ -1,14 +1,13 @@
-# Alpine is a minimal Docker image
-FROM node:alpine
+FROM node:10
 
 # Create app directory
-WORKDIR /usr/src/react-node-docker
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json into WORKDIR
 COPY package*.json ./
 
 # Copy source code into WORKDIR
-COPY build/* ./build/
+COPY . .
 
 # Build for production
 RUN npm i serve -g
