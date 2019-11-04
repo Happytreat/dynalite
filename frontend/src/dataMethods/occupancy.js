@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchOccupancyData = async () => {
   try {
-    return axios.get(process.env.API_URL).then(res => res.data)
+    return axios.get(process.env.REACT_APP_API_URL).then(res => res.data)
   } catch (error) {
     console.error(error)
   }
