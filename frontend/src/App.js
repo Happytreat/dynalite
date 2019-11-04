@@ -12,8 +12,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path='day' component={BarChartbyDay}/>
-          <Route exact path='hour' component={BarChartbyHour}/>
+          <Route exact path={`${process.env.PUBLIC_URL}day`} component={BarChartbyDay}/>
+          <Route exact path={`${process.env.PUBLIC_URL}hour`} component={BarChartbyHour}/>
           <Route component={BarChartbyDay} /> 
         </Switch>
       </BrowserRouter>
