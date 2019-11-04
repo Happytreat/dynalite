@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Rebuild image
+docker build -t dynalite_frontend --no-cache .
+
 # Remove container with the same name if exist
 docker stop dynalite_front || true && docker rm dynalite_front || true
 
