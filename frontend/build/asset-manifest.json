@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "https://www.evantay.com/tech/dynalite/static/css/main.6e8505c4.chunk.css",
-    "main.js": "https://www.evantay.com/tech/dynalite/static/js/main.dc475975.chunk.js",
-    "main.js.map": "https://www.evantay.com/tech/dynalite/static/js/main.dc475975.chunk.js.map",
-    "runtime-main.js": "https://www.evantay.com/tech/dynalite/static/js/runtime-main.5e4eb7e6.js",
-    "runtime-main.js.map": "https://www.evantay.com/tech/dynalite/static/js/runtime-main.5e4eb7e6.js.map",
-    "static/css/2.65d0fb34.chunk.css": "https://www.evantay.com/tech/dynalite/static/css/2.65d0fb34.chunk.css",
-    "static/js/2.54dd2870.chunk.js": "https://www.evantay.com/tech/dynalite/static/js/2.54dd2870.chunk.js",
-    "static/js/2.54dd2870.chunk.js.map": "https://www.evantay.com/tech/dynalite/static/js/2.54dd2870.chunk.js.map",
-    "index.html": "https://www.evantay.com/tech/dynalite/index.html",
-    "precache-manifest.766cdad55a3555656c7e4c05dab916cf.js": "https://www.evantay.com/tech/dynalite/precache-manifest.766cdad55a3555656c7e4c05dab916cf.js",
-    "service-worker.js": "https://www.evantay.com/tech/dynalite/service-worker.js",
-    "static/css/2.65d0fb34.chunk.css.map": "https://www.evantay.com/tech/dynalite/static/css/2.65d0fb34.chunk.css.map",
-    "static/css/main.6e8505c4.chunk.css.map": "https://www.evantay.com/tech/dynalite/static/css/main.6e8505c4.chunk.css.map"
+    "main.css": "/tech/dynalite/static/css/main.6e8505c4.chunk.css",
+    "main.js": "/tech/dynalite/static/js/main.f3efe859.chunk.js",
+    "main.js.map": "/tech/dynalite/static/js/main.f3efe859.chunk.js.map",
+    "runtime-main.js": "/tech/dynalite/static/js/runtime-main.b739b325.js",
+    "runtime-main.js.map": "/tech/dynalite/static/js/runtime-main.b739b325.js.map",
+    "static/css/2.65d0fb34.chunk.css": "/tech/dynalite/static/css/2.65d0fb34.chunk.css",
+    "static/js/2.b06dcbc7.chunk.js": "/tech/dynalite/static/js/2.b06dcbc7.chunk.js",
+    "static/js/2.b06dcbc7.chunk.js.map": "/tech/dynalite/static/js/2.b06dcbc7.chunk.js.map",
+    "index.html": "/tech/dynalite/index.html",
+    "precache-manifest.45ea763b0cde77aab03a3645e94d6c71.js": "/tech/dynalite/precache-manifest.45ea763b0cde77aab03a3645e94d6c71.js",
+    "service-worker.js": "/tech/dynalite/service-worker.js",
+    "static/css/2.65d0fb34.chunk.css.map": "/tech/dynalite/static/css/2.65d0fb34.chunk.css.map",
+    "static/css/main.6e8505c4.chunk.css.map": "/tech/dynalite/static/css/main.6e8505c4.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.5e4eb7e6.js",
+    "static/js/runtime-main.b739b325.js",
     "static/css/2.65d0fb34.chunk.css",
-    "static/js/2.54dd2870.chunk.js",
+    "static/js/2.b06dcbc7.chunk.js",
     "static/css/main.6e8505c4.chunk.css",
-    "static/js/main.dc475975.chunk.js"
+    "static/js/main.f3efe859.chunk.js"
   ]
 }
