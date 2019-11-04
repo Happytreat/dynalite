@@ -8,7 +8,7 @@ WORKDIR /usr/src/react-node-docker
 COPY package*.json ./
 
 # Copy source code into WORKDIR
-COPY build/* ./build/*
+COPY build/* ./build/
 
 # Build for production
 RUN npm i serve -g
