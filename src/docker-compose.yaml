@@ -2,6 +2,7 @@
 version: "2"
 services:
     dynalite_backend:
+        container_name: dyna_b
         build: .
         depends_on:
             - dynalite_psql
@@ -21,6 +22,7 @@ services:
             - /app/node_modules
 
     dynalite_psql:
+        container_name: dyna_p
         image: postgres:10.4
         ports:
             - "35432:5432"

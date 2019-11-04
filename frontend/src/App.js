@@ -7,13 +7,13 @@ import 'antd/dist/antd.css';
 class App extends Component {
   render() {
     // TODO: Get name and version from env
-    console.log('Dynalite client: v1.0.0');
+    console.log('Dynalite client: v0.1.0');
 
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path='/day' component={BarChartbyDay}/>
-          <Route exact path='/hour' component={BarChartbyHour}/>
+          <Route path='day' component={BarChartbyDay}/>
+          <Route path='hour' component={BarChartbyHour}/>
           <Route component={BarChartbyDay} /> 
         </Switch>
       </BrowserRouter>

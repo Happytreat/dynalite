@@ -31,12 +31,12 @@ export class NavBar extends React.Component {
                         style={{ lineHeight: '64px' }}
                     >
                         <Menu.Item key="1">
-                        <a href="/day" rel="noopener noreferrer">
+                        <a href="day" rel="noopener noreferrer">
                             By Day
                         </a>    
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <a href="/hour" rel="noopener noreferrer">
+                            <a href="hour" rel="noopener noreferrer">
                                 By Hour
                             </a>   
                         </Menu.Item>
