@@ -15,6 +15,8 @@ LIGHT_SENSOR_INTERVAL = 3
 # Number of times LDR is read until data is sent
 # Note that this would cause clock drift, but it isn't crucial for our use case
 LIGHT_SENSOR_ITERATIONS = TIME_INTERVAL / LIGHT_SENSOR_INTERVAL
+# Max possible failures for sending RPi data
+MAX_SEND_FAIL_COUNT = 10
 
 # Oof I implemented this before I found the dotenv library. Oh well
 # You will need to include a .env file in the same directory as this code (see example .env provided)

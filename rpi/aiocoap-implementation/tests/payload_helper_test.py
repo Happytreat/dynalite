@@ -4,7 +4,7 @@ sys.path.append('../')
 from payload_helper import encrypt_node
 
 print("Running payload helper test")
-payload = '{"rpi_id": 1, "timestamp": "2019-11-01 15:25:17", "isOccupied": 1}'
+payload = '{"rpiId": 1, "timestamp": "2019-11-01 15:25:17", "isOccupied": 1}'
 # Testing using a key of all 0s
 enc_payload = encrypt_node(payload, '00000000000000000000000000000000')
 print(enc_payload)
