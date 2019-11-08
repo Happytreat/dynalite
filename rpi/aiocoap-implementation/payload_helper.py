@@ -27,10 +27,20 @@ def encrypt_node(data, key='0'*32, iv='0'*16):
 
 def build_encrypted_payload(rpi_id, key, is_occupied):
     """
-    Helper function to build encrypted payload
+    Helper function to build encrypted payload.
+    rpi_id: String or Integer
+    is_occupied: 0 or 1
+    """
+    # Format data to suit server side (see src/models/occupancy.js):
+    """
+    rpiId: String
+    timestamp: String -> DataTypes.DATE
+    isOccupied: Boolean
     """
     time_now = datetime.datetime.now()
     timestamp = time_now.strftime("%Y-%m-%d %H:%M:%S")
-    payload = '{{"rpi_id": {0}, "timestamp": "{1}", "isOccupied": {2}}}'.format(rpi_id, timestamp, is_occupied)
+    # Convert is_occupied to a boolean
+    is_occupied = "true" if is_occupied == 1 else "false"
+    payload = '{{"rpiId": "{0}", "timestamp": "{1}", "isOccupied": {2}}}'.format(rpi_id, timestamp, is_occupied)
     print (payload)
     return encrypt_node(payload, key)
