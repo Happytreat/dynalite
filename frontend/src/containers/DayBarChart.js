@@ -30,7 +30,7 @@ class BarChartByDay extends React.Component {
 		this.getUpdatedData().then(data => this.setState({
 			datasets: [
 				{
-					label: 'Room Occupancy by Day',
+					label: 'Room occupancy (Daily)',
 					backgroundColor: color(),
 					borderColor: color(),
 					borderWidth: 1,

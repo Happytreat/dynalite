@@ -33,7 +33,7 @@ class BarChartByHour extends React.Component {
 		this.getUpdatedData().then(data => this.setState({
 			datasets: [
 				{
-					label: 'Room Occupancy by Hour',
+					label: 'Room Occupancy (Hourly)',
 					backgroundColor: color(),
 					borderColor: color(),
 					borderWidth: 1,

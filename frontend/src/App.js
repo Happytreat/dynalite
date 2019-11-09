@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import BarChartbyDay from './pages/ByDay';
-import BarChartbyHour from './pages/ByHour';
+import BarCharts from './pages/BarCharts';
 import 'antd/dist/antd.css';
 
 class App extends Component {
@@ -12,9 +11,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path='/day' component={BarChartbyDay}/>
-          <Route path='/hour' component={BarChartbyHour}/>
-          <Route component={BarChartbyDay} /> 
+          <Route component={BarCharts} /> 
         </Switch>
       </BrowserRouter>
     );
