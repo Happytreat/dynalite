@@ -18,6 +18,14 @@ const cReset = '\x1b[0m'; // Resets the console colour
  * the database if message is successfully decrypted and authenticated.
  */
 app_coap.post('/', (req, res) => {
+    res.on('timeout', function(err) {
+        console.log(`${cRed}Response timeout${cReset}: ${err}\n`);
+    });
+
+    res.on('error', function(err) {
+        console.log(`${cRed}Error${cReset}: ${err}\n`);
+    });
+
     let type, type_output; // For console display usage
     if (req._packet.reset) {
         type = 'Reset (3)';
