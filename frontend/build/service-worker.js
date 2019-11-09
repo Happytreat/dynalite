@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "https://www.evantay.com/tech/dynalite/precache-manifest.9317b3c8b112acdf3d309b2b57948a25.js"
+  "https://www.evantay.com/tech/dynalite/precache-manifest.494e290f4bcbfd57b49e78c560b82b1a.js"
 );
 
 self.addEventListener('message', (event) => {

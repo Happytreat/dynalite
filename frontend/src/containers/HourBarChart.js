@@ -8,9 +8,8 @@ import {
 } from '../dataMethods/occupancy';
 
 const GraphArea = styled.div`
-width: 768px;
-height: 512px;
-max-width: 90%;
+	width: 768px;
+	max-width: 90%;
 `
 
 class BarChartByHour extends React.Component {

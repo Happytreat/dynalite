@@ -13,7 +13,7 @@ const BarChartWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 2rem;
+  padding: 2rem 0;
 `
 
 const ByDayPage = () => {

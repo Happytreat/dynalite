@@ -9,7 +9,6 @@ import {
 
 const GraphArea = styled.div`
 	width: 768px;
-	height: 512px;
 	max-width: 90%;
 `
 
