@@ -17,8 +17,8 @@ Web server:
 
 Raspberry Pi:
 
-- Python 
-//TODO
+- Python 3, aiocoap and RPI GPIO API
+- Other hardware (e.g. Light Dependent Resistors)
 
 ## Development guides
 
