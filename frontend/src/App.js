@@ -10,11 +10,10 @@ class App extends Component {
     console.log('Dynalite client: v0.1.0');
 
     return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <Switch>
-          <Route path='day' component={BarChartbyDay}/>
-          <Route path='hour' component={BarChartbyHour}/>
-          <Route component={BarChartbyDay} /> 
+          <Route path='/day' component={BarChartbyDay}/>
+          <Route path='/hour' component={BarChartbyHour}/>
         </Switch>
       </BrowserRouter>
     );
