@@ -4,7 +4,7 @@ import { Occupancy } from '../models/index';
 const createFakeOccupancy = async () => {
     return Occupancy.create(
         {
-            rpiId: faker.random.uuid(),
+            rpiId: faker.random.number(4) + 1,
             timestamp: faker.date.between('2019-10-21', '2019-10-27'),
             isOccupied: faker.random.boolean()
         }
