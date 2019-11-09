@@ -25,10 +25,9 @@ export class NavBar extends React.Component {
                     <Menu
                         theme="dark"
                         mode="horizontal"
-                        defaultSelectedKeys={["1"]}
                         selectedKeys={[this.state.current]}
                         onClick={this.handleClick}
-                        style={{ lineHeight: '64px' }}
+                        style={{ lineHeight: '64px', textAlign: 'center' }}
                     >
                         <Menu.Item key="1">
                         <a href="https://www.evantay.com/tech/dynalite-api/" rel="noopener noreferrer">

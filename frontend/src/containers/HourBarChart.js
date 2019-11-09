@@ -9,7 +9,7 @@ import {
 
 const GraphArea = styled.div`
 	width: 768px;
-	max-width: 90%;
+	max-width: 85%;
 `
 
 class BarChartByHour extends React.Component {

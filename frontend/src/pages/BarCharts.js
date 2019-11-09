@@ -20,7 +20,8 @@ const ByDayPage = () => {
     return (
         <>
             <NavBar />
-            <Typography style={{textAlign: 'center', paddingTop: '3rem'}}>
+            <Typography style={{textAlign: 'center', paddingTop: '3rem', 
+                    paddingLeft: '2rem', paddingRight: '2rem'}}>
                 <Title level={2}>Project Dynalite</Title>
                 <Title level={4} style={{fontWeight: 'normal'}}>A full-stack IoT project on the dynamic visualisation of room occupancy.</Title>
             </Typography>
@@ -30,7 +31,8 @@ const ByDayPage = () => {
             <BarChartWrapper> 
                 <BarChartHourly />
             </BarChartWrapper>
-            <div style={{width: '512px', maxWidth: '90%', margin: 'auto', marginBottom: '1.5rem'}}>
+            <div style={{width: '512px', maxWidth: '90%', margin: 'auto', marginBottom: '1.5rem',
+                paddingLeft: '2rem', paddingRight: '2rem'}}>
                 <Text style={{fontSize: '1.1rem', lineHeight: '1.6rem'}}>
                     Dynalite is an Internet-of-Things application which performs dynamic visualisation of room occupancy. Dynalite uses one or more Raspberry Pis to measure room occupancy and a NodeJS-Express-PostgreSQL web server to store and visualise the measured data. Communication betwene the Pis and the server is implemented using COAP.
                 </Text>

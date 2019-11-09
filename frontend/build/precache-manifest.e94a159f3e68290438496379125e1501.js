@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "27ca16a56974d54a11150340e56252df",
+    "revision": "908ef722ed1b241d12f9d9c44434982c",
     "url": "https://www.evantay.com/tech/dynalite/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://www.evantay.com/tech/dynalite/static/css/2.aa7fcd32.chunk.css"
   },
   {
-    "revision": "7e41be4cc1da66578677",
+    "revision": "a007f622f7a79a937ef0",
     "url": "https://www.evantay.com/tech/dynalite/static/css/main.6e8505c4.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://www.evantay.com/tech/dynalite/static/js/2.4b1b67c7.chunk.js"
   },
   {
-    "revision": "7e41be4cc1da66578677",
-    "url": "https://www.evantay.com/tech/dynalite/static/js/main.974196e1.chunk.js"
+    "revision": "a007f622f7a79a937ef0",
+    "url": "https://www.evantay.com/tech/dynalite/static/js/main.b35886b2.chunk.js"
   },
   {
     "revision": "d07ea4782478fd2af974",
