@@ -14,6 +14,7 @@ class App extends Component {
         <Switch>
           <Route path='/day' component={BarChartbyDay}/>
           <Route path='/hour' component={BarChartbyHour}/>
+          <Route component={BarChartbyDay} /> 
         </Switch>
       </BrowserRouter>
     );
