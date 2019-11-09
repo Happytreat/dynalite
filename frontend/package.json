@@ -1,5 +1,6 @@
 {
   "name": "dynalite_frontend",
+  "description": "Dynalite is an Internet-of-Things application which performs dynamic visualisation of room occupancy.",
   "version": "0.1.0",
   "contributors": [
     {
@@ -13,6 +14,10 @@
       "url": "https://evantay.com"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Happytreat/dynalite.git"
+  },
   "private": false,
   "dependencies": {
     "antd": "^3.24.2",
