@@ -31,13 +31,13 @@ export class NavBar extends React.Component {
                         style={{ lineHeight: '64px' }}
                     >
                         <Menu.Item key="1">
-                        <a href="day" rel="noopener noreferrer">
-                            By Day
+                        <a href="https://www.evantay.com/tech/dynalite-api/" rel="noopener noreferrer">
+                            Backend API
                         </a>    
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <a href="hour" rel="noopener noreferrer">
-                                By Hour
+                            <a href="https://github.com/Happytreat/dynalite" rel="noopener noreferrer">
+                                Github Repo
                             </a>   
                         </Menu.Item>
                     </Menu>

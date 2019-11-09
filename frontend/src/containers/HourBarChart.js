@@ -8,8 +8,9 @@ import {
 } from '../dataMethods/occupancy';
 
 const GraphArea = styled.div`
-	width: 1000px;
-	height: 600px;
+width: 768px;
+height: 512px;
+max-width: 90%;
 `
 
 class BarChartByHour extends React.Component {
@@ -32,7 +33,7 @@ class BarChartByHour extends React.Component {
 		this.getUpdatedData().then(data => this.setState({
 			datasets: [
 				{
-					label: 'Room Occupancy by Hour',
+					label: 'Room Occupancy (Hourly)',
 					backgroundColor: color(),
 					borderColor: color(),
 					borderWidth: 1,

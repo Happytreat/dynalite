@@ -18,6 +18,14 @@ const cReset = '\x1b[0m'; // Resets the console colour
  * the database if message is successfully decrypted and authenticated.
  */
 app_coap.post('/', (req, res) => {
+    res.on('timeout', function(err) {
+        console.log(`${cRed}Response timeout${cReset}: ${err}\n`);
+    });
+
+    res.on('error', function(err) {
+        console.log(`${cRed}Error${cReset}: ${err}\n`);
+    });
+
     let type, type_output; // For console display usage
     if (req._packet.reset) {
         type = 'Reset (3)';
@@ -45,7 +53,7 @@ app_coap.post('/', (req, res) => {
         //IV set to all 0 for now
         const iv = '0000000000000000';
         //createDecipher is deprecated, using createDecipheriv instead
-        const decipher = crypto.createDecipheriv(ALGORITHM, key, iv);
+        const decipher = crypto.createDecipheriv(ALGORITHM, KEY, iv);
         decipher.setAutoPadding(false);
         //To confirm that this works, data is sent from RPi as base64
         decrypted = decipher.update(pl.toString('utf8'), 'base64', 'utf8') + decipher.final('utf8');
