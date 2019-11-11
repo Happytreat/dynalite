@@ -9,7 +9,8 @@ The scripts to be deployed on the Raspberry Pis can be found in rpi/aiocoap-impl
 The connection of the Light Dependent Resistor (LDR) to the RPi (after weeks of optimization!) can be seen in these images:
 ![RPi circuit 1](images/rpi-circuit-1.jpg?raw=true)
 ![RPi circuit 2](images/rpi-circuit-2.jpg?raw=true)
-Note that the longer of the LED (the anode) should be facing the yellow wire.
+
+Note that the longer leg of the LED (the + anode) should be facing the yellow wire.
 
 ### Setting up the environment
 * Copy the files from rpi/aiocoap-implementation into the RPi using scp or via some other method (e.g. USB).
