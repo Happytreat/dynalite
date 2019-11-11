@@ -12,7 +12,7 @@ The connection of the Light Dependent Resistor (LDR) to the RPi (after weeks of 
 
 <img src="images/rpi-circuit-2.jpg?raw=true" width="50%" title="RPi circuit 2" />
 
-Note that the longer of the LED (the anode) should be facing the yellow wire.
+Note that the longer leg of the LED (the + anode) should be facing the yellow wire.
 
 ### Setting up the environment
 * Copy the files from rpi/aiocoap-implementation into the RPi using scp or via some other method (e.g. USB).
