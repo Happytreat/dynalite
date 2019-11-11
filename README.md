@@ -44,5 +44,5 @@ To setup the Raspberry Pi, view the [Raspberry Pi setup guide](DEVELOP_RASPBERRY
 - To deploy the backend server and database using `docker-compose`, follow the steps in the [Docker-compose backend deployment guide](DEVELOP_BACKEND_DOCKER.md).
 
 ## Acknowledgements
-* Dynalite was developed for National University of Singapore's [CS3103: Computer Networks Practice](https://nusmods.com/modules/CS3103/computer-networks-practice) in Autumn 2019. The module was taught by [Dr. Anand Bhojan](https://www.comp.nus.edu.sg/cs/bio/bhojan/)).
+* Dynalite was developed for National University of Singapore's [CS3103: Computer Networks Practice](https://nusmods.com/modules/CS3103/computer-networks-practice) in Autumn 2019. The module was taught by [Dr. Anand Bhojan](https://www.comp.nus.edu.sg/cs/bio/bhojan/).
 * This project was developed by [Evan Tay](https://github.com/DigiPie/), [Joyce Yeo](https://github.com/pikulet/), [Matthew Lee](https://github.com/crazoter) and [Melodies Sim](https://github.com/Happytreat) from September to November 2019.

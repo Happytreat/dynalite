@@ -31,5 +31,4 @@ REACT_APP_API_URL=https://www.evantay.com/tech/dynalite-api/occupancy
 2. Stop the server by using `CTRL + C`.
 
 ## Testing
-
-1. To test Dynalite front-end without your own Raspberry Pi or back-end server, use the example `REACT_APP_API_URL` given above.
+To test Dynalite front-end without your own Raspberry Pi or back-end server, use the example `REACT_APP_API_URL` given above.
