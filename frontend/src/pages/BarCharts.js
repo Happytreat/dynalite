@@ -42,7 +42,7 @@ const ByDayPage = () => {
                         style={{margin: '0.4rem'}}>
                     Backend API
                 </Button>
-                <Button type='primary' icon='github' href='https://github.com/Happytreat/dynalite'
+                <Button type='primary' icon='github' href='https://github.com/DigiPie/dynalite'
                         style={{margin: '0.4rem'}}>
                     Github repo
                 </Button>

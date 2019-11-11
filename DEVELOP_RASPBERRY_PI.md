@@ -7,14 +7,16 @@ The scripts to be deployed on the Raspberry Pis can be found in rpi/aiocoap-impl
 
 ### The RPi circuit setup
 The connection of the Light Dependent Resistor (LDR) to the RPi (after weeks of optimization!) can be seen in these images:
-![RPi circuit 1](images/rpi-circuit-1.jpg?raw=true)
-![RPi circuit 2](images/rpi-circuit-2.jpg?raw=true)
+
+<img src="images/rpi-circuit-1.jpg?raw=true" width="50%" title="RPi circuit 1" />
+
+<img src="images/rpi-circuit-2.jpg?raw=true" width="50%" title="RPi circuit 2" />
 
 Note that the longer leg of the LED (the + anode) should be facing the yellow wire.
 
 ### Setting up the environment
 * Copy the files from rpi/aiocoap-implementation into the RPi using scp or via some other method (e.g. USB).
-* Update the `rpi/aiocoap-implementation/.env` and `rpi/aiocoap-implementation/tests/.env` files to the correct information (RPI_ID and KEY).
+* Update the `rpi/aiocoap-implementation/.env` and `rpi/aiocoap-implementation/tests/.env` files to your personal private RPI_ID and KEY.
 * Other variables can be configured in `rpi/iocoap-implementation/constants.py`.
 
 ### The Code

@@ -35,7 +35,7 @@ export class NavBar extends React.Component {
                         </a>    
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <a href="https://github.com/Happytreat/dynalite" rel="noopener noreferrer">
+                            <a href="https://github.com/DigiPie/dynalite" rel="noopener noreferrer">
                                 Github Repo
                             </a>   
                         </Menu.Item>

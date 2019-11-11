@@ -1,4 +1,4 @@
-# Local web server deployment guide
+# Local backend server deployment guide
 ## Downloads
 
 1. [Install PostgreSQL](https://www.postgresql.org/download/).
@@ -19,7 +19,7 @@ KEY=<key>
 ```
 Replace the fields in `< >` accordingly.
 
-Example (not actual fields):
+Example:
 ```
 DATABASE_URL=postgres://postgres:password@localhost:5432/postgres
 ALGORITHM=aes-128-cbc
@@ -27,6 +27,7 @@ KEY=helloWorldSecureKey21
 ```
 
 - 5432 is the default port for PostgreSQL
+- We do not actually use the above example values in deployment and neither should you
 
 ## Local server setup
 
