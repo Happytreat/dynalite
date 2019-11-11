@@ -40,7 +40,7 @@ export const batchOccupancyByDay = (data) => {
   const days = times(daysInPeriod, () => []);
   forEach(data, o => {
     // Monday
-    const day = (dateDiff(moment([2019, 10, 28, 8]).tz('Asia/Singapore'), moment(o.timestamp).tz('Asia/Singapore'))) % 7;
+    const day = moment(o.timestamp).utc(0).day() - 1;
     days[day].push(o);
   })
   return map(days, (day) => sortBy(day, ['timestamp', 'rpiId']));
@@ -53,7 +53,7 @@ export const batchOccupancyByHour = (data) => {
   const hoursInPeriod = 24;
   const hours = times(hoursInPeriod, () => []);
   forEach(data, o => {
-    const hour = (dateDiffByHour(moment([2019, 10, 28, 8]).tz('Asia/Singapore'), moment(o.timestamp).tz('Asia/Singapore'))) % 24;
+    const hour = moment(o.timestamp).utc(0).hour();
     hours[hour].push(o);
   })
   return map(hours, (hour) => sortBy(hour, ['timestamp', 'rpiId']));
