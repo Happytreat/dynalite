@@ -1,12 +1,12 @@
-# Dynalite
+# electric_plug high_brightness low_brightness Dynalite electric_plug high_brightness low_brightness
 Dynalite is an [Internet-of-Things](https://en.wikipedia.org/wiki/Internet_of_things) application which performs dynamic visualisation of room occupancy. Dynalite uses one or more Raspberry Pis to measure room occupancy and a NodeJS-Express-PostgreSQL web server to store and visualise the measured data. Communication betwene the Pis and the server is implemented using [COAP](https://coap.technology/).
 
-## View the project
+## View the project (Deprecated)
 
 - Frontend: https://www.evantay.com/tech/dynalite/
 - Backend: https://www.evantay.com/tech/dynalite-api/
 
-## Tech stack
+## :zap: Tech stack :zap:
 This project was built using 3 Docker containers and 1 Raspberry Pi:
 
 1. Raspberry Pi:
@@ -30,7 +30,7 @@ This project was built using 3 Docker containers and 1 Raspberry Pi:
 - Reads data from backend server via API at https://www.evantay.com/tech/dynalite-api/occupancy
 - Uses ChartJS for visualisation
 
-## Development guides
+## :dolphin: Development guides
 
 ### Raspberry Pi
 To setup the Raspberry Pi, view the [Raspberry Pi setup guide](DEVELOP_RASPBERRY_PI.md).
