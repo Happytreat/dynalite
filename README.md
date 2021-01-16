@@ -1,4 +1,4 @@
-# electric_plug high_brightness low_brightness Dynalite electric_plug high_brightness low_brightness
+# :electric_plug: :high_brightness: :low_brightness: Dynalite :electric_plug: :high_brightness: :low_brightness:
 Dynalite is an [Internet-of-Things](https://en.wikipedia.org/wiki/Internet_of_things) application which performs dynamic visualisation of room occupancy. Dynalite uses one or more Raspberry Pis to measure room occupancy and a NodeJS-Express-PostgreSQL web server to store and visualise the measured data. Communication betwene the Pis and the server is implemented using [COAP](https://coap.technology/).
 
 ## View the project (Deprecated)
