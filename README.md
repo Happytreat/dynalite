@@ -6,7 +6,7 @@ Dynalite is an [Internet-of-Things](https://en.wikipedia.org/wiki/Internet_of_th
 - Frontend: https://www.evantay.com/tech/dynalite/
 - Backend: https://www.evantay.com/tech/dynalite-api/
 
-## :zap: Tech stack :zap:
+## :zap: Tech stack
 This project was built using 3 Docker containers and 1 Raspberry Pi:
 
 1. Raspberry Pi:
